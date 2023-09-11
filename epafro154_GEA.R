@@ -1027,28 +1027,6 @@ write.csv(all_outliers, "all_outliers.csv")
 gea_outliers = c(lfmm_outliers, prda.env.cand, epafro.rda.cand) #313 outliers
 write.csv(gea_outliers,"gea_outliers.csv", row.names = FALSE)
           
-#####sort outlier position list from the genomic df####
-outliers_df = read.csv("all_outliers.csv")
-l=outliers_df$x
-all_outliers = outliers_df$x
-length(which(duplicated(l)))
-loci_list_df = read.table("Loci position list.txt", header = TRUE, sep = "")# generated list from tassel
-outlier_pos= subset(loci_list_df, Name %in% c(all_outliers))
-write.csv(outlier_pos, "outlier_position.csv", row.names = FALSE)   
-getwd()
-
-
-#####find the loci functions from the gene function list downloaded from the Sol network page####
-gff = read.csv('Eggplant_V4.1_gff.csv')
-head(gff)
-m1 = gff$maker1
-m2 = gff$marker2
-out_p = outlier_pos$Position
-
-
-#df.2.sub <- df2[df2$CertainColumn %in% df1$Specific.column,]
-
-
 #### Venn diagram ####
 
 library("VennDiagram")
